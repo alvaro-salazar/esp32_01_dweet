@@ -1,10 +1,12 @@
 #include <Arduino.h>
 #include "libwifi.h"
-
+#include <WiFi.h>
+ 
 const char * ssid = "virus";
 const char * password = "a1b2c3d4";
-const char * host = "www.google.com";
+const char * host = "dweet.io";
 const int puerto = 80;
+String url = "/dweet/for/uceva00?temperatura=30.4";
 
 //@author Alvaro
 /**
@@ -34,7 +36,7 @@ void loop() {
   }
 
   //Peticion (request) GET al servidor http
-  cliente.print("GET /index.html HTTP/1.1\r\nHost: "+String(host)+"\r\n"+"Connection: close\r\n\r\n");
+  cliente.print("GET "+url+" HTTP/1.1\r\nHost: "+String(host)+"\r\n"+"Connection: close\r\n\r\n");
 
   //Debemos darle un tiempo al servidor a que responda (response) la peticion
   //delay(5000); //No funciona aqui
